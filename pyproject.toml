@@ -13,6 +13,9 @@ keywords = []
 authors = [{ name = "Johandielangman", email = "johan@datatreehouse.org" }]
 classifiers = [
     "Development Status :: 4 - Beta",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -39,6 +42,9 @@ Changelog = "https://github.com/Johandielangman/ttl-cache-decorator/blob/main/CH
 Documentation = "https://johandielangman.github.io/ttl-cache-decorator/"
 Issues = "https://github.com/Johandielangman/ttl-cache-decorator/issues"
 Source = "https://github.com/Johandielangman/ttl-cache-decorator"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ttl_cache"]
 
 [tool.ty.environment]
 root = ["./src", "."]
