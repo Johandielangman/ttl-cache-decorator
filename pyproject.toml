@@ -1,0 +1,123 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ttl-cache-decorator"
+version = "0.1.0"
+description = 'LRU Cache Decorator with a Time to Live'
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = []
+authors = [{ name = "Johandielangman", email = "johan@datatreehouse.org" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[dependency-groups]
+lint = ["ty", "ruff"]
+test = ["pytest", "pytest-cov", "pytest-pretty", "dirty-equals"]
+docs = ["zensical", "catppuccin-zensical"]
+dev = [
+    { include-group = "test" },
+    { include-group = "lint" },
+    { include-group = "docs" },
+]
+
+
+[project.urls]
+Changelog = "https://github.com/Johandielangman/ttl-cache-decorator/blob/main/CHANGELOG.md"
+Documentation = "https://johandielangman.github.io/ttl-cache-decorator/"
+Issues = "https://github.com/Johandielangman/ttl-cache-decorator/issues"
+Source = "https://github.com/Johandielangman/ttl-cache-decorator"
+
+[tool.ty.environment]
+root = ["./src", "."]
+python = ".venv"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "B",
+    "I",
+    "FAST",
+    "A",
+    "C4",
+    "DTZ",
+    "ISC",
+    "ICN",
+    "LOG",
+    "PT",
+    "Q",
+    "RET",
+    "SIM",
+    "TID",
+    "ARG",
+    "PTH",
+    "N",
+    "PERF",
+    "RUF",
+]
+ignore = ["S101", "RUF100"]
+fixable = ["ALL"]
+unfixable = []
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "-rfExX",
+    "--durations=10",
+    "--durations-min=1",
+]
+minversion = "9.0"
+testpaths = ["tests"]
+markers = ["integration: marks tests that are integration tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source_pkgs = ["ttl_cache", "tests"]
+branch = true
+parallel = true
+omit = ["src/ttl_cache/__version__.py"]
+
+[tool.coverage.paths]
+ttl_cache = ["src/ttl_cache", "*/ttl-cache/src/ttl_cache"]
+tests = ["tests", "*/ttl-cache/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+show_missing = true

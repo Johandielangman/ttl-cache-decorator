@@ -1,0 +1,41 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # A personal access token is required so the pushed tag triggers the
+      # test/docs/publish workflows — pushes made with the default
+      # GITHUB_TOKEN never start new workflow runs.
+      - uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.RELEASE_PAT || github.token }}
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+      - name: Bump version
+        run: uv version --bump ${{ inputs.bump }}
+      - name: Generate changelog
+        run: |
+          cargo install git-cliff --locked
+          git-cliff --config cliff.toml --tag "v$(uv version --short)" --output CHANGELOG.md
+      - name: Commit, tag and push
+        run: |
+          VERSION=$(uv version --short)
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git add pyproject.toml uv.lock CHANGELOG.md
+          git commit -m "chore: release v$VERSION"
+          git tag "v$VERSION"
+          git push origin main --follow-tags
