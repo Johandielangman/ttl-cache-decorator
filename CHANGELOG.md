@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.4](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.4) - 2026-11-08
+
+### Build & CI
+
+- Better ci/cd pipelines ([bd5280d](https://github.com/Johandielangman/ttl-cache-decorator/commit/bd5280d6939526990c7e7bb0af9cca63e791ccc0))
+- NO_COLOR env variable ([6a6353a](https://github.com/Johandielangman/ttl-cache-decorator/commit/6a6353a63816ddd13bda2b7885404188617d00b1))
+
 ## [0.1.3](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.3) - 2026-11-08
 
 ### Miscellaneous
