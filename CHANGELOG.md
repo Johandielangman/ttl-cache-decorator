@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.5](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.5) - 2026-11-08
+
+### Build & CI
+
+- Remove the build test and use recommended uv publish ([bf3af49](https://github.com/Johandielangman/ttl-cache-decorator/commit/bf3af498d34d6bdb8801fb2ea054f096b50f46ed))
+
 ## [0.1.4](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.4) - 2026-11-08
 
 ### Build & CI
