@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.12"
 
 [[package]]
@@ -556,7 +556,8 @@ wheels = [
 ]
 
 [[package]]
-name = "ttl-cache"
+name = "ttl-cache-decorator"
+version = "0.1.1"
 source = { editable = "." }
 
 [package.dev-dependencies]
