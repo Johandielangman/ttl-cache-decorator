@@ -24,12 +24,13 @@ jobs:
           token: ${{ secrets.RELEASE_PAT || github.token }}
           fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: git-cliff
       - name: Bump version
         run: uv version --bump ${{ inputs.bump }}
       - name: Generate changelog
-        run: |
-          cargo install git-cliff --locked
-          git-cliff --config cliff.toml --tag "v$(uv version --short)" --output CHANGELOG.md
+        run: git-cliff --config cliff.toml --tag "v$(uv version --short)" --output CHANGELOG.md
       - name: Commit, tag and push
         run: |
           VERSION=$(uv version --short)
