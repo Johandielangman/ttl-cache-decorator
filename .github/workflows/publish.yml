@@ -3,10 +3,18 @@ on:
   push:
     tags:
       - "v*"
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
 permissions:
   id-token: write
 jobs:
   publish:
+    if: >-
+      github.event_name == 'push' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -14,6 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.ref }}
           fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
         with:

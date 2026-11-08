@@ -6,6 +6,11 @@ on:
     tags:
       - "v*"
   pull_request:
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
 permissions:
   contents: read
 concurrency:
