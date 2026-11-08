@@ -20,8 +20,10 @@ concurrency:
   group: release
   cancel-in-progress: false
 
+# No FORCE_COLOR here: uv honours it even when piped, so $(uv version --short)
+# would capture ANSI escape codes into the version string.
 env:
-  FORCE_COLOR: "1"
+  NO_COLOR: "1"
 
 jobs:
   prepare:
@@ -54,9 +56,15 @@ jobs:
             *-rc) args="--bump ${BUMP%-rc} --bump rc" ;;
             *)    args="--bump $BUMP" ;;
           esac
-          current=$(uv version --short)
+          current=$(uv version --short --color never)
           # uv rejects invalid transitions itself (e.g. "rc" or "stable" from a stable version).
-          version=$(uv version --short --dry-run --no-sync $args)
+          version=$(uv version --short --color never --dry-run --no-sync $args)
+
+          # Guard against anything but a plain X.Y.Z[{a,b,rc}N] leaking into tags, URLs and job names.
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+((a|b|rc)[0-9]+)?$ ]]; then
+            echo "::error::Unexpected version string: $(printf '%q' "$version")"
+            exit 1
+          fi
 
           if git rev-parse -q --verify "refs/tags/v$version" >/dev/null; then
             echo "::error::Tag v$version already exists"
@@ -102,7 +110,7 @@ jobs:
       - name: Bump version
         run: |
           uv version --no-sync $BUMP_ARGS
-          test "$(uv version --short)" = "$VERSION"
+          test "$(uv version --short --color never)" = "$VERSION"
       - name: Generate changelog and release notes
         run: |
           uv run --frozen --only-group release git-cliff --tag "v$VERSION" --output CHANGELOG.md
