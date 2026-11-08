@@ -12,7 +12,7 @@
         <meta name="author" content="Johandielangman">
       
       
-        <link rel="canonical" href="https://www.example.com/dev/">
+        <link rel="canonical" href="https://johandielangman.github.io/ttl-cache-decorator/dev/">
       
       
       
@@ -26,7 +26,7 @@
     
     
       
-        <title>Get started - Documentation</title>
+        <title>Get started - ttl-cache-decorator</title>
       
     
     
@@ -102,7 +102,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="" title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="" title="ttl-cache-decorator" class="md-header__button md-logo" aria-label="ttl-cache-decorator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -117,7 +117,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Documentation
+            ttl-cache-decorator
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -223,13 +223,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="" title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+    <a href="" title="ttl-cache-decorator" class="md-nav__button md-logo" aria-label="ttl-cache-decorator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    Documentation
+    ttl-cache-decorator
   </label>
   
     <div class="md-nav__source">
@@ -692,11 +692,10 @@ usual <code>lru_cache</code> helpers: <code>cache_info()</code> and <code>cache_
 different moments instead of all at once. Use it to avoid a <em>thundering herd</em>
 when many cached values would otherwise expire simultaneously:</p>
 <div class="language-python highlight"><span class="filename">Adding jitter</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="hll"><span class="nd">@ttl_lru_cache</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</span></span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">fetch_metrics</span><span class="p">(</span><span class="n">service</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="o">...</span>
+</span></span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">fetch_metrics</span><span class="p">(</span><span class="n">service</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span> <span class="o">...</span>
 </span></code></pre></div>
 <h3 id="cache-helpers">Cache helpers<a class="headerlink" href="#cache-helpers" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><span class="filename">Inspecting and clearing the cache</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fetch_user</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span>   <span class="c1"># CacheInfo(hits=..., misses=..., maxsize=128, currsize=...)</span>
+<div class="language-python highlight"><span class="filename">Inspecting and clearing the cache</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fetch_user</span><span class="o">.</span><span class="n">cache_info</span><span class="p">()</span>  <span class="c1"># CacheInfo(hits=..., misses=..., maxsize=128, currsize=...)</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">fetch_user</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">()</span>  <span class="c1"># Drop all cached entries</span>
 </span></code></pre></div>
 <details class="info">
