@@ -2,8 +2,11 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/ttl-cache-decorator.svg)](https://pypi.org/project/ttl-cache-decorator)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ttl-cache-decorator.svg)](https://pypi.org/project/ttl-cache-decorator)
+[![CI](https://github.com/Johandielangman/ttl-cache-decorator/actions/workflows/ci.yml/badge.svg)](https://github.com/Johandielangman/ttl-cache-decorator/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/Johandielangman/ttl-cache-decorator/graph/badge.svg)](https://codecov.io/gh/Johandielangman/ttl-cache-decorator)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://johandielangman.github.io/ttl-cache-decorator/)
 
-An LRU cache decorator with a time to live — like `functools.lru_cache`, but entries expire after a configurable number of seconds.
+An LRU cache decorator with a time to live like `functools.lru_cache`, but entries expire after a configurable number of seconds.
 
 ## Installation
 

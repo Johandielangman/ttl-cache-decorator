@@ -110,14 +110,13 @@ when many cached values would otherwise expire simultaneously:
 
 ``` python title="Adding jitter" hl_lines="1"
 @ttl_lru_cache(ttl=60, jitter=10)
-def fetch_metrics(service: str) -> dict:
-    ...
+def fetch_metrics(service: str) -> dict: ...
 ```
 
 ### Cache helpers
 
 ``` python title="Inspecting and clearing the cache"
-fetch_user.cache_info()   # CacheInfo(hits=..., misses=..., maxsize=128, currsize=...)
+fetch_user.cache_info()  # CacheInfo(hits=..., misses=..., maxsize=128, currsize=...)
 fetch_user.cache_clear()  # Drop all cached entries
 ```
 

@@ -1,6 +1,6 @@
 [project]
-site_url = "https://www.example.com/"
-site_name = "Documentation"
+site_url = "https://johandielangman.github.io/ttl-cache-decorator/"
+site_name = "ttl-cache-decorator"
 site_description = "LRU Cache Decorator with a Time to Live"
 site_author = "Johandielangman"
 

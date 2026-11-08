@@ -1,0 +1,27 @@
+# https://docs.codecov.com/docs/codecovyml-reference
+coverage:
+  status:
+    project:
+      default:
+        target: auto # don't drop below the base commit
+        threshold: 1%
+    patch:
+      default:
+        target: 80%
+
+flag_management:
+  default_rules:
+    carryforward: true
+    statuses:
+      - type: project
+        target: auto
+        threshold: 1%
+
+comment:
+  layout: "condensed_header, diff, flags, files"
+  require_changes: true
+
+# Wait for all 12 matrix uploads before reporting status.
+codecov:
+  notify:
+    after_n_builds: 12

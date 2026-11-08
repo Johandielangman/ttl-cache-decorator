@@ -22,20 +22,20 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3.15",
     "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = []
 
 [dependency-groups]
 lint = ["ty", "ruff"]
 test = ["pytest", "pytest-cov", "pytest-pretty", "dirty-equals"]
-docs = ["zensical", "catppuccin-zensical"]
+docs = ["zensical", "catppuccin-zensical", "mike"]
+release = ["git-cliff>=2.14.2"]
 dev = [
     { include-group = "test" },
     { include-group = "lint" },
     { include-group = "docs" },
+    { include-group = "release" },
 ]
-
 
 [project.urls]
 Changelog = "https://github.com/Johandielangman/ttl-cache-decorator/blob/main/CHANGELOG.md"
@@ -100,18 +100,10 @@ addopts = [
 minversion = "9.0"
 testpaths = ["tests"]
 markers = ["integration: marks tests that are integration tests"]
-pythonpath = ["src"]
-asyncio_mode = "auto"
 
 [tool.coverage.run]
-source_pkgs = ["ttl_cache", "tests"]
+source_pkgs = ["ttl_cache"]
 branch = true
-parallel = true
-omit = ["src/ttl_cache/__version__.py"]
-
-[tool.coverage.paths]
-ttl_cache = ["src/ttl_cache", "*/ttl-cache/src/ttl_cache"]
-tests = ["tests", "*/ttl-cache/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -127,3 +119,7 @@ exclude_lines = [
     "@(abc\\.)?abstractmethod",
 ]
 show_missing = true
+
+[tool.uv.sources]
+# Zensical-compatible fork of mike (versioned docs); pinned to a commit via uv.lock
+mike = { git = "https://github.com/squidfunk/mike.git" }
