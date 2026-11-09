@@ -15,7 +15,7 @@ watch = ["src/"]
 
 nav = [{ "Get started" = "index.md" }]
 
-extra_css = ["static/stylesheets/extra.css"]
+extra_css = ["docs/static/stylesheets/extra.css"]
 # extra_javascript = ["javascripts/extra.js"]
 
 [project.theme]
@@ -23,7 +23,7 @@ name = "catppuccin"
 # variant = "classic"
 # custom_dir = "overrides"
 # favicon = "images/favicon.png"
-custom_dir = "static/html"
+custom_dir = "docs/static/html"
 language = "en"
 features = [
     "announce.dismiss",
