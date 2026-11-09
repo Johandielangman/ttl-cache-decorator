@@ -23,7 +23,7 @@ name = "catppuccin"
 # variant = "classic"
 # custom_dir = "overrides"
 # favicon = "images/favicon.png"
-custom_dir = "docs/static/html"
+# custom_dir = "docs/static/html"
 language = "en"
 features = [
     "announce.dismiss",
