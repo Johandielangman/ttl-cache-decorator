@@ -1,0 +1,51 @@
+{
+    "File Banner": {
+        "scope": "python",
+        "prefix": "t-banner",
+        "body": [
+            "# ~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~",
+            "#",
+            "# Author: Johandielangman",
+            "# Date: $CURRENT_MONTH_NAME $CURRENT_YEAR",
+            "#",
+            "# ~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~^~",
+            "",
+            "$1"
+        ],
+        "description": "Banner for top of file"
+    },
+    "Comment Header 1": {
+        "scope": "python",
+        "prefix": "t-header1",
+        "body": [
+            "# =============== // $1 // ==============="
+        ],
+        "description": "A comment header"
+    },
+    "Comment Header 2": {
+        "scope": "python",
+        "prefix": "t-header2",
+        "body": [
+            "# ~.~.~.~.~.~.~.~ // $1 // ~.~.~.~.~.~.~.~"
+        ],
+        "description": "A comment header"
+    },
+    "Comment Header 3": {
+        "scope": "python",
+        "prefix": "t-header3",
+        "body": [
+            "# ========================================",
+            "# $1",
+            "# ========================================"
+        ],
+        "description": "A comment header"
+    },
+    "Comment Step": {
+        "scope": "python",
+        "prefix": "t-step",
+        "body": [
+            "# ====> $1"
+        ],
+        "description": "A comment step"
+    },
+}

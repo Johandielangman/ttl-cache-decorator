@@ -1,0 +1,38 @@
+{
+  "Admonition": {
+    "prefix": "adm",
+    "scope": "markdown",
+    "body": ["!!! ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} \"${2:Title}\"", "", "    ${3:Content}"],
+    "description": "Admonition block"
+  },
+  "Admonition - No Title": {
+    "prefix": "adm-no-title",
+    "scope": "markdown",
+    "body": ["!!! ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} \"\"", "", "    ${2:Content}"],
+    "description": "Admonition without a title"
+  },
+  "Admonition - Collapsible": {
+    "prefix": "adm-collapsible",
+    "scope": "markdown",
+    "body": ["??? ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} \"${2:Title}\"", "", "    ${3:Content}"],
+    "description": "Collapsible admonition (collapsed by default)"
+  },
+  "Admonition - Collapsible Expanded": {
+    "prefix": "adm-collapsible-open",
+    "scope": "markdown",
+    "body": ["???+ ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} \"${2:Title}\"", "", "    ${3:Content}"],
+    "description": "Collapsible admonition (expanded by default)"
+  },
+  "Admonition - Inline Right": {
+    "prefix": "adm-inline-end",
+    "scope": "markdown",
+    "body": ["!!! ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} inline end \"${2:Title}\"", "", "    ${3:Content}"],
+    "description": "Inline admonition floated to the right"
+  },
+  "Admonition - Inline Left": {
+    "prefix": "adm-inline",
+    "scope": "markdown",
+    "body": ["!!! ${1|note,abstract,info,tip,success,question,warning,failure,danger,bug,example,quote|} inline \"${2:Title}\"", "", "    ${3:Content}"],
+    "description": "Inline admonition floated to the left"
+  }
+}

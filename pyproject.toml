@@ -28,7 +28,7 @@ dependencies = []
 [dependency-groups]
 lint = ["ty", "ruff"]
 test = ["pytest", "pytest-cov", "pytest-pretty", "dirty-equals"]
-docs = ["zensical", "catppuccin-zensical", "mike"]
+docs = ["zensical", "catppuccin-zensical", "mike", "mkdocstrings[python]"]
 release = ["git-cliff>=2.14.2"]
 dev = [
     { include-group = "test" },

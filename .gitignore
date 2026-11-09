@@ -31,7 +31,7 @@ site/
 !.vscode/extensions.json
 !.vscode/settings.json
 !.vscode/launch.json
-!project.code-snippets
+!*.code-snippets
 .coverage
 
 tests/temp/**

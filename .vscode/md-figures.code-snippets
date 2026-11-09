@@ -1,0 +1,34 @@
+{
+    "Figure - Auto-numbered caption": {
+        "prefix": "fig",
+        "scope": "markdown",
+        "body": [
+            "![${1:alt}](../static/images/${2:image.png}){: class=\"img-${3|w50,w60,w75,w85,w100|} center\"}",
+            "",
+            "/// ${4:|caption,figure-caption} | #fig-${5:slug}",
+            "${6:Caption}",
+            "///"
+        ],
+        "description": "Insert an auto-numbered figure with pymdownx.blocks.caption"
+    },
+    "Figure - Plain caption": {
+        "prefix": "fig-plain",
+        "scope": "markdown",
+        "body": [
+            "![${1:alt}](../static/images/${2:image.png}){: class=\"img-${3|w50,w60,w75,w85,w100|} center\"}",
+            "",
+            "/// caption",
+            "${4:Caption}",
+            "///"
+        ],
+        "description": "Insert a figure with a plain caption (no auto-numbering)"
+    },
+    "Figure reference": {
+        "prefix": "fig-ref",
+        "scope": "markdown",
+        "body": [
+            "[Figure ${1:1}](#fig-${2:slug})"
+        ],
+        "description": "Reference a figure by its anchor"
+    }
+}
