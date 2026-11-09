@@ -1,0 +1,1185 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LRU Cache Decorator with a Time to Live">
+      
+      
+        <meta name="author" content="Johandielangman">
+      
+      
+        <link rel="canonical" href="https://johandielangman.github.io/ttl-cache-decorator/dev/api_reference/">
+      
+      
+      
+        <link rel="prev" href="../how_it_works/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../static/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.0">
+    
+    
+      
+        <title>Reference - ttl-cache-decorator</title>
+      
+    
+    
+  
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.4ab2de0c.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+  <link rel="stylesheet" href="../assets/stylesheets/catppuccin.css">
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetbrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Jetbrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../static/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./.." title="ttl-cache-decorator" class="md-header__button md-logo" aria-label="ttl-cache-decorator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ttl-cache-decorator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="catppuccin-latte" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="catppuccin-macchiato" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/Johandielangman/ttl-cache-decorator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ttl-cache-decorator
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="ttl-cache-decorator" class="md-nav__button md-logo" aria-label="ttl-cache-decorator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    ttl-cache-decorator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Johandielangman/ttl-cache-decorator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ttl-cache-decorator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-timer" viewBox="0 0 24 24"><path d="M10 2h4M12 14l3-3"/><circle cx="12" cy="14" r="8"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Get started
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-down-to-line" viewBox="0 0 24 24"><path d="M12 17V3M6 11l6 6 6-6M19 21H5"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Installation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_it_works/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-message-circle-question-mark" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  How it Works
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8.62 9.8A2.25 2.25 0 1 1 12 6.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-heart" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="M8.62 9.8A2.25 2.25 0 1 1 12 6.836a2.25 2.25 0 1 1 3.38 2.966l-2.626 2.856a.998.998 0 0 1-1.507 0z"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ttlcachedfunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TTLCachedFunction
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;TTLCachedFunction
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TTLCachedFunction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Methods:
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction.cache_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cache_info
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction.cache_clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cache_clear
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_lru_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ttl_lru_cache
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_cache.ttl_lru_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;ttl_lru_cache
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ttlcachedfunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        TTLCachedFunction
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;TTLCachedFunction
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TTLCachedFunction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Methods:
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction.cache_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cache_info
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ttl_cache.TTLCachedFunction.cache_clear" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cache_clear
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_lru_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ttl_lru_cache
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ttl_cache.ttl_lru_cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;ttl_lru_cache
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+<h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h1>
+<h2 id="ttlcachedfunction">TTLCachedFunction<a class="headerlink" href="#ttlcachedfunction" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="ttl_cache.TTLCachedFunction" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">TTLCachedFunction</span>
+
+
+<a href="#ttl_cache.TTLCachedFunction" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-external" title="&lt;code&gt;typing.Protocol&lt;/code&gt;" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
+
+
+
+        <p>Same signature as the wrapped function, plus <code>lru_cache</code>'s helpers.</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+<h3 id="ttl_cache.TTLCachedFunction-functions">Methods:<a href="#ttl_cache.TTLCachedFunction-functions" class="headerlink" title="Permanent link">&para;</a></h3>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ttl_cache.TTLCachedFunction.cache_info" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">cache_info</span>
+
+
+<a href="#ttl_cache.TTLCachedFunction.cache_info" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cache_info</span><span class="p">()</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/ttl_cache/_ttl_lru.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#ttl_cache.TTLCachedFunction.cache_info--source--__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="ttl_cache.TTLCachedFunction.cache_info--source--__span-0-13"><a id="ttl_cache.TTLCachedFunction.cache_info--source--__codelineno-0-13" name="ttl_cache.TTLCachedFunction.cache_info--source--__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">cache_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">functools</span><span class="o">.</span><span class="n">_CacheInfo</span><span class="p">:</span> <span class="o">...</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="ttl_cache.TTLCachedFunction.cache_clear" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">cache_clear</span>
+
+
+<a href="#ttl_cache.TTLCachedFunction.cache_clear" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cache_clear</span><span class="p">()</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/ttl_cache/_ttl_lru.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#ttl_cache.TTLCachedFunction.cache_clear--source--__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="ttl_cache.TTLCachedFunction.cache_clear--source--__span-0-14"><a id="ttl_cache.TTLCachedFunction.cache_clear--source--__codelineno-0-14" name="ttl_cache.TTLCachedFunction.cache_clear--source--__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">cache_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h2 id="ttl_lru_cache">ttl_lru_cache<a class="headerlink" href="#ttl_lru_cache" title="Permanent link">&para;</a></h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="ttl_cache.ttl_lru_cache" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code>            <span class="doc doc-object-name doc-function-name">ttl_lru_cache</span>
+
+
+<a href="#ttl_cache.ttl_lru_cache" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">ttl_lru_cache</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxsize</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">typed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents first">
+
+        <p>A decorator that works like <code>lru_cache</code> but with a time to live (ttl).</p>
+<p>Under the hood it still uses <code>lru_cache</code>, but the cached call receives an
+extra positional-only <code>time_bucket</code> argument:</p>
+<div class="language-text highlight"><pre><span></span><code>time_bucket = int((time.monotonic() + offset) // ttl)
+</code></pre></div>
+<p>An entry stays "alive" while the bucket value is unchanged and expires when
+the bucket rolls over. <code>offset</code> is drawn once per decorated function from
+<code>random.uniform(0, jitter)</code>, so different functions (or processes) expire
+at different moments instead of all at once.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>ttl</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Time to live in seconds. Defaults to 60.</p>
+              </div>
+            </td>
+            <td>
+                  <code>60</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>jitter</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Max random offset in seconds applied to the bucket boundaries.
+Defaults to 0.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>maxsize</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Max size of the cache, or <code>None</code> for unbounded. Defaults to 128.</p>
+              </div>
+            </td>
+            <td>
+                  <code>128</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>typed</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether argument types are part of the cache key. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[<a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]], <a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;TTLCachedFunction&lt;/span&gt; (&lt;code&gt;ttl_cache._ttl_lru.TTLCachedFunction&lt;/code&gt;)" href="./#ttl_cache.TTLCachedFunction">TTLCachedFunction</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A decorator that wraps a function in a TTL-aware LRU cache. The wrapped</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[<a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]], <a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;TTLCachedFunction&lt;/span&gt; (&lt;code&gt;ttl_cache._ttl_lru.TTLCachedFunction&lt;/code&gt;)" href="./#ttl_cache.TTLCachedFunction">TTLCachedFunction</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>function keeps its signature and exposes <code>cache_info</code> and</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[<a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]], <a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;TTLCachedFunction&lt;/span&gt; (&lt;code&gt;ttl_cache._ttl_lru.TTLCachedFunction&lt;/code&gt;)" href="./#ttl_cache.TTLCachedFunction">TTLCachedFunction</a>[<span title="ttl_cache._ttl_lru.ttl_lru_cache[**P]">P</span>, <span title="ttl_cache._ttl_lru.ttl_lru_cache[R]">R</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>cache_clear</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError">ValueError</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>ttl</code> is not positive or <code>jitter</code> is negative.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+        <p>Example:</p>
+<div class="language-text highlight"><pre><span></span><code>&gt;&gt;&gt; @ttl_lru_cache(ttl=30, jitter=5)
+... def fetch(key: str) -&gt; str:
+...     return key.upper()
+</code></pre></div>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>src/ttl_cache/_ttl_lru.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-61">61</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-71">71</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-72">72</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-73">73</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-74">74</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-75">75</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-76">76</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-77">77</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-78">78</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-79">79</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-80">80</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-81">81</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-82">82</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-83">83</a></span>
+<span class="normal"><a href="#ttl_cache.ttl_lru_cache--source--__codelineno-0-84">84</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="ttl_cache.ttl_lru_cache--source--__span-0-17"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-17" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">ttl_lru_cache</span><span class="p">[</span><span class="o">**</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">](</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-18"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-18" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-18"></a>    <span class="n">ttl</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-19"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-19" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-19"></a>    <span class="n">jitter</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-20"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-20" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-20"></a>    <span class="n">maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-21"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-21" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-21"></a>    <span class="n">typed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-22"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-22" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-22"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">]],</span> <span class="n">TTLCachedFunction</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">]]:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-23"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-23" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-23"></a><span class="w">    </span><span class="sd">"""A decorator that works like ``lru_cache`` but with a time to live (ttl).</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-24"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-24" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-24"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-25"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-25" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-25"></a><span class="sd">    Under the hood it still uses ``lru_cache``, but the cached call receives an</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-26"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-26" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-26"></a><span class="sd">    extra positional-only ``time_bucket`` argument:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-27"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-27" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-27"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-28"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-28" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-28"></a><span class="sd">        time_bucket = int((time.monotonic() + offset) // ttl)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-29"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-29" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-29"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-30"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-30" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-30"></a><span class="sd">    An entry stays "alive" while the bucket value is unchanged and expires when</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-31"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-31" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-31"></a><span class="sd">    the bucket rolls over. ``offset`` is drawn once per decorated function from</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-32"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-32" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-32"></a><span class="sd">    ``random.uniform(0, jitter)``, so different functions (or processes) expire</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-33"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-33" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-33"></a><span class="sd">    at different moments instead of all at once.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-34"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-34" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-34"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-35"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-35" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-35"></a><span class="sd">    Args:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-36"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-36" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-36"></a><span class="sd">        ttl: Time to live in seconds. Defaults to 60.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-37"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-37" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-37"></a><span class="sd">        jitter: Max random offset in seconds applied to the bucket boundaries.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-38"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-38" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-38"></a><span class="sd">            Defaults to 0.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-39"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-39" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-39"></a><span class="sd">        maxsize: Max size of the cache, or ``None`` for unbounded. Defaults to 128.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-40"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-40" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-40"></a><span class="sd">        typed: Whether argument types are part of the cache key. Defaults to False.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-41"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-41" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-41"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-42"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-42" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-42"></a><span class="sd">    Returns:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-43"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-43" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-43"></a><span class="sd">        A decorator that wraps a function in a TTL-aware LRU cache. The wrapped</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-44"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-44" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-44"></a><span class="sd">        function keeps its signature and exposes ``cache_info`` and</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-45"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-45" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-45"></a><span class="sd">        ``cache_clear``.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-46"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-46" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-46"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-47"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-47" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-47"></a><span class="sd">    Raises:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-48"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-48" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-48"></a><span class="sd">        ValueError: If ``ttl`` is not positive or ``jitter`` is negative.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-49"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-49" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-49"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-50"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-50" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-50"></a><span class="sd">    Example:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-51"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-51" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-51"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-52"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-52" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-52"></a><span class="sd">        &gt;&gt;&gt; @ttl_lru_cache(ttl=30, jitter=5)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-53"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-53" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-53"></a><span class="sd">        ... def fetch(key: str) -&gt; str:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-54"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-54" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-54"></a><span class="sd">        ...     return key.upper()</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-55"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-55" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-55"></a><span class="sd">    """</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-56"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-56" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-56"></a>    <span class="k">if</span> <span class="n">ttl</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-57"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-57" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-57"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ttl must be positive, got </span><span class="si">{</span><span class="n">ttl</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-58"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-58" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-58"></a>    <span class="k">if</span> <span class="n">jitter</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-59"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-59" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-59"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"jitter must be non-negative, got </span><span class="si">{</span><span class="n">jitter</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-60"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-60" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-60"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-61"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-61" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-61"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">TTLCachedFunction</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">]:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-62"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-62" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-62"></a>        <span class="n">offset</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">jitter</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-63"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-63" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-63"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-64"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-64" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-64"></a>        <span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="n">maxsize</span><span class="p">,</span> <span class="n">typed</span><span class="o">=</span><span class="n">typed</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-65"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-65" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-65"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">cached_with_time</span><span class="p">(</span><span class="n">_time_bucket</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">R</span><span class="p">:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-66"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-66" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-66"></a>            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-67"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-67" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-67"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-68"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-68" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-68"></a>        <span class="c1"># lru_cache types its arguments as Hashable, which P.args/P.kwargs can't</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-69"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-69" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-69"></a>        <span class="c1"># be proven to be. Unhashable arguments still raise TypeError at call</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-70"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-70" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-70"></a>        <span class="c1"># time, exactly as with plain lru_cache.</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-71"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-71" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-71"></a>        <span class="n">call_cached</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">R</span><span class="p">],</span> <span class="n">cached_with_time</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-72"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-72" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-72"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-73"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-73" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-73"></a>        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-74"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-74" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-74"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">R</span><span class="p">:</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-75"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-75" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-75"></a>            <span class="n">time_bucket</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span> <span class="o">//</span> <span class="n">ttl</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-76"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-76" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-76"></a>            <span class="k">return</span> <span class="n">call_cached</span><span class="p">(</span><span class="n">time_bucket</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-77"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-77" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-77"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-78"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-78" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-78"></a>        <span class="n">wrapper</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-79"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-79" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-79"></a>            <span class="n">cache_info</span><span class="o">=</span><span class="n">cached_with_time</span><span class="o">.</span><span class="n">cache_info</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-80"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-80" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-80"></a>            <span class="n">cache_clear</span><span class="o">=</span><span class="n">cached_with_time</span><span class="o">.</span><span class="n">cache_clear</span><span class="p">,</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-81"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-81" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-81"></a>        <span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-82"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-82" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-82"></a>        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">TTLCachedFunction</span><span class="p">[</span><span class="n">P</span><span class="p">,</span> <span class="n">R</span><span class="p">],</span> <span class="n">wrapper</span><span class="p">)</span>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-83"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-83" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-83"></a>
+</span><span id="ttl_cache.ttl_lru_cache--source--__span-0-84"><a id="ttl_cache.ttl_lru_cache--source--__codelineno-0-84" name="ttl_cache.ttl_lru_cache--source--__codelineno-0-84"></a>    <span class="k">return</span> <span class="n">decorator</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../how_it_works/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How it Works">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                How it Works
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Johandielangman
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+  
+    <div class="md-copyright__catppuccin">
+      Styled with
+      <a href="https://jonathan343.github.io/catppuccin-zensical/" target="_blank" rel="noopener">
+        catppuccin-zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d31f0ffa.min.js"></script>
+      
+    
+  </body>
+</html>
