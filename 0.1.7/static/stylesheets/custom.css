@@ -1,0 +1,35 @@
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+.img-w50  { width: 50%; }
+.img-w60  { width: 60%; }
+.img-w75  { width: 75%; }
+.img-w85  { width: 85%; }
+.img-w100 { width: 100%; }
+
+figure.img-w50,
+figure.img-w60,
+figure.img-w75,
+figure.img-w85,
+figure.img-w100 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure.img-w50  { width: 50%; }
+figure.img-w60  { width: 60%; }
+figure.img-w75  { width: 75%; }
+figure.img-w85  { width: 85%; }
+figure.img-w100 { width: 100%; }
+
+figure > img {
+  display: block;
+  margin: 0 auto;
+}
