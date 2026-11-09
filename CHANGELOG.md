@@ -2,6 +2,27 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.6rc1](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.6rc1) - 2026-11-09
+
+### Documentation
+
+- Add static dir and code snippets for docs ([d14bcfc](https://github.com/Johandielangman/ttl-cache-decorator/commit/d14bcfc93898e9aa9082d2c72fd9c5918384e6eb))
+- Add better docs and api reference ([78ad4ec](https://github.com/Johandielangman/ttl-cache-decorator/commit/78ad4ec434e577bd7ceefb612a4db767bf6619d4))
+
+### Testing
+
+- Get test coverage to 100 ([362aab3](https://github.com/Johandielangman/ttl-cache-decorator/commit/362aab31acdf4be3d3b46db23c2b5126d5677388))
+
+### Build & CI
+
+- Update uv.lock ([73d2327](https://github.com/Johandielangman/ttl-cache-decorator/commit/73d2327a8f768291c2e17c0ea0058708edcc906f))
+
+### Miscellaneous
+
+- Zensical path to static from root ([df11a67](https://github.com/Johandielangman/ttl-cache-decorator/commit/df11a6705b61b1755122ca9c1e13d2fef68d94d9))
+- Disable announcements ([5b52dbb](https://github.com/Johandielangman/ttl-cache-decorator/commit/5b52dbbebb1459cb89dbbb90671f625a2b7b2671))
+- Remove root css ([54b439e](https://github.com/Johandielangman/ttl-cache-decorator/commit/54b439e20a142cdf38a37adb885c4c21581031e3))
+
 ## [0.1.5](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.5) - 2026-11-08
 
 ### Build & CI
