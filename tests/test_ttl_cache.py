@@ -1,5 +1,7 @@
 import time
 
+import pytest
+
 from ttl_cache import ttl_lru_cache
 
 
@@ -33,3 +35,19 @@ def test_cache_hit() -> None:
 
     info = cached_function.cache_info()
     assert (info.hits, info.misses) == (1, 3)
+
+
+def test_negative_jitter():
+    with pytest.raises(ValueError, match=r"jitter must be non-negative, got -1"):
+
+        @ttl_lru_cache(ttl=2, jitter=-1, maxsize=32)
+        def cached_function(x: int) -> int:
+            return x * 2
+
+
+def test_negative_ttl():
+    with pytest.raises(ValueError, match=r"ttl must be positive, got -2"):
+
+        @ttl_lru_cache(ttl=-2, jitter=1, maxsize=32)
+        def cached_function(x: int) -> int:
+            return x * 2
