@@ -23,7 +23,7 @@ def ttl_lru_cache[**P, R](
     """A decorator that works like ``lru_cache`` but with a time to live (ttl).
 
     Under the hood it still uses ``lru_cache``, but the cached call receives an
-    extra positional-only ``time_bucket`` argument::
+    extra positional-only ``time_bucket`` argument:
 
         time_bucket = int((time.monotonic() + offset) // ttl)
 
@@ -48,6 +48,7 @@ def ttl_lru_cache[**P, R](
         ValueError: If ``ttl`` is not positive or ``jitter`` is negative.
 
     Example:
+
         >>> @ttl_lru_cache(ttl=30, jitter=5)
         ... def fetch(key: str) -> str:
         ...     return key.upper()

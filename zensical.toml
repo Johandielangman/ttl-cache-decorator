@@ -13,16 +13,21 @@ site_dir = "site"
 dev_addr = "localhost:42069"
 watch = ["src/"]
 
-nav = [{ "Get started" = "index.md" }]
+nav = [
+    { "Get started" = "index.md" },
+    { "Installation" = "installation.md" },
+    { "How it Works" = "how_it_works.md" },
+    { "Reference" = "api_reference.md" },
+]
 
-extra_css = ["docs/static/stylesheets/extra.css"]
+extra_css = ["static/stylesheets/custom.css"]
 # extra_javascript = ["javascripts/extra.js"]
 
 [project.theme]
 name = "catppuccin"
 # variant = "classic"
 # custom_dir = "overrides"
-# favicon = "images/favicon.png"
+favicon = "static/images/favicon.png"
 # custom_dir = "docs/static/html"
 language = "en"
 features = [
