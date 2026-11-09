@@ -757,7 +757,7 @@ wheels = [
 
 [[package]]
 name = "ttl-cache-decorator"
-version = "0.1.6rc1"
+version = "0.1.7"
 source = { editable = "." }
 
 [package.dev-dependencies]

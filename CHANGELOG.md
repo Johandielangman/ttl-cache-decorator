@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## [0.1.6rc1](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.6rc1) - 2026-11-09
+## [0.1.7](https://github.com/Johandielangman/ttl-cache-decorator/releases/tag/v0.1.7) - 2026-11-09
 
 ### Documentation
 
